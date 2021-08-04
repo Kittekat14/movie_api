@@ -20,23 +20,73 @@
     <li>Data Security, and more.</li>
   </ul>
   <p>This complete tech stack is known as the MERN (MongoDB, Express, React, and Node.js) Stack. The REST API will be accessed via commonly used HTTP methods like GET and POST. Similar methods (CRUD) will be used to retrieve data from your database and store that data in a non-relational way.
-  <div>
-    <ul>
-      <li>Endpoints</li>
-    </ul>
-    <p>GET: /movies: </p>
-    <p>POST: </p>
-   
-    A high-level description of what kind of data the endpoint returns
-    The endpoint URL
-    The method type (GET, POST, PUT, or DELETE)
-    The query parameters (parameters in the URL)
-    The format of data expected in the body of the request (and an example)
-    The format of the response data
-    An example request
-    An example response
-
-  </div>
+  <table>
+    <tr>
+      <th>Business Logic</th>
+      <th>URL Endpoints</th>
+      <th>http method</th>
+      <th>request body format of data</th>
+      <th>response body format of data</th>
+    </tr>
+    <tr>
+      <td>users can get a list of movies</td>
+      <td>/movies</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>data of the movies in JSON format (.json)</td>
+    </tr>
+    <tr>
+      <td>users can read data (year, description, genre, director, actors) about a single movie, selected by id</td>
+      <td>/movies/:id</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>description data about each movie in JSON format</td>
+    </tr>
+    <tr>
+      <td>users can read data (year, description, genre, director, actors) about a single movie, selected by title</td>
+      <td>/movies/:title</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>description data about each movie in JSON format</td>
+    </tr>
+    <tr>
+      <td>users can register</td>
+      <td>/users</td>
+      <td>POST</td>
+      <td>{
+        username: Kittekat14,
+        password: *************,
+        email: katrin_hofstetter@gmx.de  
+      }</td>
+      <td>{
+        username: Kittekat14,
+        password: *************,
+        email: katrin_hofstetter@gmx.de,
+        id: 163ezdh287zr  
+      }</td>
+    </tr>
+    <tr>
+      <td>users can create a playlist or more (of their movies to watch later)</td>
+      <td>/users/:playlist</td>
+      <td>POST</td>
+      <td>{                                         
+        listTitle: [listTitle],                     
+        movies: [array of movies]   
+      }</td>
+      <td>{                                         
+        listTitle: [listTitle],                     
+        movies: [array of movies]  
+      }</td>
+    </tr>
+    <tr>
+      <td>users can update their playlist (by adding new movies)</td>
+      <td>/users/:playlist/[title]</td>
+      <td>PUT</td>
+      <td>none</td>
+      <td>showing new array with pushed movie at the end</td>
+    </tr>
+  </table>
+    
 
 </body>
 </html>

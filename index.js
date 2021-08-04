@@ -1,11 +1,14 @@
 const express = require('express'),
-morgan = require('morgan');
+morgan = require('morgan'),
+bodyParser = require('body-parser'),
 uuid = require('uuid');
+
 const app = express();
 
+app.use(express.json());
 app.use(morgan('common'));
 app.use(express.static('public'));
-
+app.use(bodyParser.json());
 
 let movies = [
   {
@@ -100,6 +103,8 @@ let movies = [
   },
 ];
 
+
+// GET methods
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
@@ -112,15 +117,28 @@ app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
+//GET movies by ID
 app.get('/movies/:id', (req,res) => {
   const movie = movies.find(m => m.id === parseInt(req.params.id));
   if(!movie) {
     res.status(404).send('The movie with this same ID was not found.');
   } else {
-      res.send(movie);
+    res.send(movie);
+  }
+})
+//GET movies by title
+app.get('/movies/:title', (req,res) => {
+  const movie = movies.find(m => m.title === req.params.title);
+  if(!movie) {
+    res.status(404).send('The movie with this title was not found.');
+  } else {
+    res.status(200).json(movie);
   }
 })
 
+// POST methods
+
+// Posting a new Movie to the in-memory DB over POST METHOD
 
 app.post('/movies', (req, res) => {
   const newMovie = req.body;
@@ -134,10 +152,6 @@ app.post('/movies', (req, res) => {
     res.status(201).send(newMovie);
   }
 });
-
-app.put('/movies', (req,res) => {
-  res.send({ title: '', director: ''})
-})
 
 
 
