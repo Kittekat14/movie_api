@@ -109,10 +109,6 @@ app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
 
-app.get('/public/documentation', (req, res) => {                  
-  res.sendFile('public/documentation.html', { root: __dirname });
-});
-
 app.get('/movies', (req, res) => {
   res.json(movies);
 });
