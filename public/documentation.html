@@ -29,29 +29,36 @@
       <th>response body format of data</th>
     </tr>
     <tr>
-      <td>users can get a list of movies</td>
+      <td>users can get a list of all movies</td>
       <td>/movies</td>
       <td>GET</td>
       <td>none</td>
       <td>data of the movies in JSON format (.json)</td>
     </tr>
     <tr>
-      <td>users can read data (year, description, genre, director, actors) about a single movie, selected by id</td>
-      <td>/movies/:id</td>
-      <td>GET</td>
-      <td>none</td>
-      <td>description data about each movie in JSON format</td>
-    </tr>
-    <tr>
-      <td>users can read data (year, description, genre, director, actors) about a single movie, selected by title</td>
+      <td>users can read data about a single movie, selected by title</td>
       <td>/movies/:title</td>
       <td>GET</td>
       <td>none</td>
-      <td>description data about each movie in JSON format</td>
+      <td>description data about a movie ({description, genre, director, image URL, featured: false/true}) in JSON</td>
     </tr>
     <tr>
-      <td>users can register</td>
-      <td>/users</td>
+      <td>users can read data about a director, selected by name</td>
+      <td>/directors/:name</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>description data about a director ({bio, birth year, death year}) in JSON</td>
+    </tr>
+    <tr>
+      <td>users can read data about a genre, selected by name</td>
+      <td>/genres/:name</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>description data about a genre ({description}) in JSON</td>
+    </tr>
+    <tr>
+      <td>users can register by username</td>
+      <td>/users/:username</td>
       <td>POST</td>
       <td>{
         username: Kittekat14,
@@ -62,12 +69,24 @@
         username: Kittekat14,
         password: *************,
         email: katrin_hofstetter@gmx.de,
-        id: 163ezdh287zr  
+        id: 163ezdh287zr (random id number) 
       }</td>
     </tr>
     <tr>
+      <td>users can deregister by username</td>
+      <td>/users/:username</td>
+      <td>DELETE</td>
+      <td>{
+        username: Kittekat14,
+        password: *************,
+        email: katrin_hofstetter@gmx.de,
+        id: 163ezdh287zr (random id number)   
+      }</td>
+      <td>simple text message that user was deleted</td>
+    </tr>
+    <tr>
       <td>users can create a playlist or more (of their movies to watch later)</td>
-      <td>/users/:playlist</td>
+      <td>/users/:playlists</td>
       <td>POST</td>
       <td>{                                         
         listTitle: [listTitle],                     
@@ -75,15 +94,23 @@
       }</td>
       <td>{                                         
         listTitle: [listTitle],                     
-        movies: [array of movies]  
+        movies: [array of movies],
+        id: jsgfz74zf (random id number)  
       }</td>
     </tr>
     <tr>
-      <td>users can update their playlist (by adding new movies)</td>
-      <td>/users/:playlist/[title]</td>
+      <td>users can update their playlist (by pushing new movie to array/deleting movie from array(.pop) or replacing title)</td>
+      <td>/users/:playlists/:listTitle or /:movie</td>
       <td>PUT</td>
       <td>none</td>
-      <td>showing new array with pushed movie at the end</td>
+      <td>showing JSON data with new title or new array with pushed or popped movie at the end</td>
+    </tr>
+    <tr>
+      <td>users can update their user info</td>
+      <td>/users/:[email],[username] or [password]</td>
+      <td>PUT</td>
+      <td>none</td>
+      <td>showing new updated data</td>
     </tr>
   </table>
     

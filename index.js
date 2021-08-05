@@ -103,8 +103,8 @@ let movies = [
   },
 ];
 
-
-// GET methods
+//GET Methods
+// GET homepage and list of all movies in JSON
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
@@ -113,39 +113,58 @@ app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
-//GET movies by ID
-app.get('/movies/:id', (req,res) => {
-  const movie = movies.find(m => m.id === parseInt(req.params.id));
-  if(!movie) {
-    res.status(404).send('The movie with this same ID was not found.');
-  } else {
-    res.send(movie);
-  }
-})
 //GET movies by title
 app.get('/movies/:title', (req,res) => {
   const movie = movies.find(m => m.title === req.params.title);
   if(!movie) {
-    res.status(404).send('The movie with this title was not found.');
+    res.status(404).send('The movie with this same title was not found.');
   } else {
-    res.status(200).json(movie);
+    res.status(200).send(movie);
+  }
+})
+//GET directors by name
+app.get('/directors/:name', (req,res) => {
+  const director = directors.find(d => d.name === req.params.name);
+  if(!director) {
+    res.status(404).send('The director with this name was not found.');
+  } else {
+    res.status(200).send(director);
+  }
+})
+//GET genres by name
+app.get('/genres/:name', (req,res) => {
+  const genre = genres.find(g => g.name === req.params.name);
+  if(!genre) {
+    res.status(404).send('The genre with this name was not found.');
+  } else {
+    res.status(200).send(genre);
   }
 })
 
-// POST methods
-
-// Posting a new Movie to the in-memory DB over POST METHOD
-
-app.post('/movies', (req, res) => {
-  const newMovie = req.body;
-
-  if (!newMovie.title) {
-    const message = 'Missing title in request body';
+// POST Methods
+// Creating a new User Account
+app.post('/users/:username', (req, res) => {
+  const newUser = req.params.username;
+  if (!newUser) {
+    const message = 'Missing Username in request body';
     res.status(400).send(message);
   } else {
-    newMovie.id = uuid.v4();
-    movies.push(newMovie);
-    res.status(201).send(newMovie);
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    res.status(201).send(newUser);
+  }
+});
+
+// Creating a new Movie Playlist
+app.post('/users/playlists', (req, res) => {
+  const newPlaylist = req.body;
+  if (!newPlaylist) {
+    const message = 'Missing Playlist Title or at least one Movie in request body';
+    res.status(400).send(message);
+  } else {
+    newPlaylist.id = uuid.v4();
+    playlists.push(newPlaylist);
+    res.status(201).send(newPlaylist);
   }
 });
 
