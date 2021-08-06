@@ -144,8 +144,8 @@ app.get('/genres/:name', (req,res) => {
   }
 })
 
-// POST Methods //where should I put the data, I wanna send? req.params or req.body? And like what? As a variable?
-// Create new User Account by username
+// POST Methods 
+// Creating new User Account by username
 app.post('/users/:username', (req, res) => {
   const newUser = req.params.username;
   if (!newUser) {
@@ -157,7 +157,7 @@ app.post('/users/:username', (req, res) => {
     res.status(201).send(`${newUser}, you have sucessfully created a new account.`);
   }
 });
-// Create new Movie Playlist by title
+// Creating new Movie Playlist by title
 app.post('/users/playlists/:title', (req, res) => {
   let newPlaylist = req.params.title;
   if (!newPlaylist) {
@@ -171,7 +171,7 @@ app.post('/users/playlists/:title', (req, res) => {
 });
 
 // DELETE Requests
-// Deleting a user
+// Deleting user by username
 app.delete('/users/:username', (req, res) => {
   let userToDelete = req.params.username;
   if (!userToDelete) {
@@ -181,7 +181,7 @@ app.delete('/users/:username', (req, res) => {
     res.status(201).send(`The user with the username ${userToDelete} has been deleted.`);
   }
 });
-// deleting a movie from playlist
+// Deleting movie from playlist by movie
 app.delete('/users/:username/:playlists/:title/:movie', (req, res) => {
   let movieToDelete = req.params.movie;
   if (!movieToDelete) {
@@ -193,7 +193,7 @@ app.delete('/users/:username/:playlists/:title/:movie', (req, res) => {
 });
 
 //PUT Requests
-//Add new movie to an existing playlist of a user
+//Adding new movie to an existing playlist of a user
 app.put('/users/:username/:playlists/:title/:movie', (req, res) => {
   let newMovie = req.params.movie;
   let user = req.params.username;
@@ -205,7 +205,7 @@ app.put('/users/:username/:playlists/:title/:movie', (req, res) => {
     res.status(201).send(`Movie '${newMovie}' has been added to your playlist.`);
   }
 });     
-//Updating user account (new username)
+//Updating user account (changing username)
 app.put('/users/:id/:username', (req, res) => {
   let newUserName = req.params.username;
   if (!newUserName) {
