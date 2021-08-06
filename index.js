@@ -106,7 +106,7 @@ let movies = [
   },
 ];
 
-//GET Methods
+//GET Requests
 // GET homepage and list of all movies in JSON
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
@@ -116,61 +116,105 @@ app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
-//GET movies by title
+//GET movies by title //only thing that works, but I don't HAVE the other arrays (users, directors, genres,..) yet!
 app.get('/movies/:title', (req,res) => {
   const movie = movies.find(m => m.title === req.params.title);
   if(!movie) {
     res.status(404).send('The movie with this same title was not found.');
   } else {
-    res.status(200).send(movie);
+    res.status(200).json(movie);
   }
 })
 //GET directors by name
 app.get('/directors/:name', (req,res) => {
-  const director = directors.find(d => d.name === req.params.name);
+  const director = movies.find(d => d.director === req.params.name);
   if(!director) {
     res.status(404).send('The director with this name was not found.');
   } else {
-    res.status(200).send(director);
+    res.status(200).json(director);
   }
 })
 //GET genres by name
 app.get('/genres/:name', (req,res) => {
-  const genre = genres.find(g => g.name === req.params.name);
+  const genre = movies.find(g => g.genre === req.params.name);
   if(!genre) {
     res.status(404).send('The genre with this name was not found.');
   } else {
-    res.status(200).send(genre);
+    res.status(200).json(genre);
   }
 })
 
-// POST Methods
-// Creating a new User Account
+// POST Methods //where should I put the data, I wanna send? req.params or req.body? And like what? As a variable?
+// Create new User Account by username
 app.post('/users/:username', (req, res) => {
   const newUser = req.params.username;
   if (!newUser) {
-    const message = 'Missing Username in request body';
+    const message = 'Missing Username in Request Parameters!';
     res.status(400).send(message);
   } else {
     newUser.id = uuid.v4();
     users.push(newUser);
-    res.status(201).send(newUser);
+    res.status(201).send(`${newUser}, you have sucessfully created a new account.`);
   }
 });
-
-// Creating a new Movie Playlist
-app.post('/users/playlists', (req, res) => {
-  const newPlaylist = req.body;
+// Create new Movie Playlist by title
+app.post('/users/playlists/:title', (req, res) => {
+  let newPlaylist = req.params.title;
   if (!newPlaylist) {
-    const message = 'Missing Playlist Title or at least one Movie in request body';
+    const message = 'Missing Playlist Title!';
     res.status(400).send(message);
   } else {
     newPlaylist.id = uuid.v4();
     playlists.push(newPlaylist);
-    res.status(201).send(newPlaylist);
+    res.status(201).send(`Playlist with title ${newPlaylist} has been added to your playlists.`);
   }
 });
 
+// DELETE Requests
+// Deleting a user
+app.delete('/users/:username', (req, res) => {
+  let userToDelete = req.params.username;
+  if (!userToDelete) {
+    const message = 'There is no user with this username.';
+    res.status(400).send(message);
+  } else {
+    res.status(201).send(`The user with the username ${userToDelete} has been deleted.`);
+  }
+});
+// deleting a movie from playlist
+app.delete('/users/:username/:playlists/:title/:movie', (req, res) => {
+  let movieToDelete = req.params.movie;
+  if (!movieToDelete) {
+    const message = 'There is no movie with this title.';
+    res.status(400).send(message);
+  } else {
+    res.status(201).send(`The movie with the title ${movieToDelete} has been deleted.`);
+  }
+});
+
+//PUT Requests
+//Add new movie to an existing playlist of a user
+app.put('/users/:username/:playlists/:title/:movie', (req, res) => {
+  let newMovie = req.params.movie;
+  let user = req.params.username;
+  if(!newMovie){
+    const message = 'Missing new Movie title in the Request Parameters';
+    res.status(400).send(message);
+  } else {
+    user.playlists.movies.push(newMovie);
+    res.status(201).send(`Movie '${newMovie}' has been added to your playlist.`);
+  }
+});     
+//Updating user account (new username)
+app.put('/users/:id/:username', (req, res) => {
+  let newUserName = req.params.username;
+  if (!newUserName) {
+    const message = 'Missing new Username in Request Parameters';
+    res.status(400).send(message);
+  } else {
+    res.status(201).send(`Username has been changed into ${newUserName}.`);
+  }
+});
 
 
 app.use((err, req, res, next) => {

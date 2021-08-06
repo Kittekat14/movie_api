@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Docs</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Documentation</h1>
@@ -60,54 +61,56 @@
       <td>users can register by username</td>
       <td>/users/:username</td>
       <td>POST</td>
-      <td>{
-        username: Kittekat14,
-        password: *************,
-        email: katrin_hofstetter@gmx.de  
+      <td>{<br>
+        username: Kittekat14,<br>
+        password: *************,<br>
+        email: katrin_hofstetter@gmx.de<br>  
       }</td>
-      <td>{
-        username: Kittekat14,
-        password: *************,
-        email: katrin_hofstetter@gmx.de,
-        id: 163ezdh287zr (random id number) 
+      <td>{<br>
+        username: Kittekat14,<br>
+        password: *************,<br>
+        email: katrin_hofstetter@gmx.de,<br>
+        id: 163ezdh287zr (random id number)<br>
       }</td>
     </tr>
     <tr>
-      <td>users can deregister by username</td>
+      <td>users can deregister</td>
       <td>/users/:username</td>
       <td>DELETE</td>
-      <td>{
-        username: Kittekat14,
-        password: *************,
-        email: katrin_hofstetter@gmx.de,
-        id: 163ezdh287zr (random id number)   
-      }</td>
+      <td>none</td>
       <td>simple text message that user was deleted</td>
     </tr>
     <tr>
-      <td>users can create a playlist or more (of their movies to watch later)</td>
-      <td>/users/:playlists</td>
+      <td>users can create a new playlist or more</td>
+      <td>/users/playlists/:title</td>
       <td>POST</td>
-      <td>{                                         
-        listTitle: [listTitle],                     
-        movies: [array of movies]   
+      <td>{<br>                                         
+        listTitle: [listTitle],<br>                    
+        movies: [array of movies]  <br> 
       }</td>
-      <td>{                                         
-        listTitle: [listTitle],                     
-        movies: [array of movies],
-        id: jsgfz74zf (random id number)  
+      <td>{<br>                                    
+        listTitle: [listTitle],<br>                   
+        movies: [array of movies],<br>
+        id: jsgfz74zf (random id number)  <br>
       }</td>
     </tr>
     <tr>
-      <td>users can update their playlist (by pushing new movie to array/deleting movie from array(.pop) or replacing title)</td>
-      <td>/users/:playlists/:listTitle or /:movie</td>
+      <td>users can add new movie to their playlist</td>
+      <td>/users/:username/:playlists/:title/:movie</td>
       <td>PUT</td>
       <td>none</td>
-      <td>showing JSON data with new title or new array with pushed or popped movie at the end</td>
+      <td>showing only a text that a movie has been added</td>
+    </tr>
+    <tr>
+      <td>users can delete movie from their playlist</td>
+      <td>/users/:username/:playlists/:title/:movie</td>
+      <td>DELETE</td>
+      <td>none</td>
+      <td>showing only a text that a movie has been removed</td>
     </tr>
     <tr>
       <td>users can update their user info</td>
-      <td>/users/:[email],[username] or [password]</td>
+      <td>/users/:id/:[email],[username] or [password]</td>
       <td>PUT</td>
       <td>none</td>
       <td>showing new updated data</td>
