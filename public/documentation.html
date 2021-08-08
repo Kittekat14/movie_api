@@ -59,7 +59,7 @@
     </tr>
     <tr>
       <td>users can register by username</td>
-      <td>/users/:username</td>
+      <td>/users</td>
       <td>POST</td>
       <td>{<br>
         username: Kittekat14,<br>
@@ -81,36 +81,22 @@
       <td>simple text message that user was deleted</td>
     </tr>
     <tr>
-      <td>users can create a new playlist or more</td>
-      <td>/users/playlists/:title</td>
-      <td>POST</td>
-      <td>{<br>                                         
-        listTitle: [listTitle],<br>                    
-        movies: [array of movies]  <br> 
-      }</td>
-      <td>{<br>                                    
-        listTitle: [listTitle],<br>                   
-        movies: [array of movies],<br>
-        id: jsgfz74zf (random id number)  <br>
-      }</td>
-    </tr>
-    <tr>
-      <td>users can add new movie to their playlist</td>
-      <td>/users/:username/:playlists/:title/:movie</td>
-      <td>PUT</td>
+      <td>users can add movie titles to their list of favorites</td>
+      <td>/users/:username</td>
+      <td>PATCH</td>
       <td>none</td>
-      <td>showing only a text that a movie has been added</td>
+      <td>new list of favorites</td>
     </tr>
     <tr>
-      <td>users can delete movie from their playlist</td>
-      <td>/users/:username/:playlists/:title/:movie</td>
+      <td>users can delete movie titles (= title) from their list of favorites</td>
+      <td>/users/:username/favorites/:title</td>
       <td>DELETE</td>
       <td>none</td>
       <td>showing only a text that a movie has been removed</td>
     </tr>
     <tr>
-      <td>users can update their user info</td>
-      <td>/users/:id/:[email],[username] or [password]</td>
+      <td>users can update their user info (e.g. change their username)</td>
+      <td>/users/:username</td>
       <td>PUT</td>
       <td>none</td>
       <td>showing new updated data</td>

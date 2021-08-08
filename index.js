@@ -18,25 +18,25 @@ let movies = [
     id: 1,
     title: 'Flags of our Fathers',
     year: 2006,
-    genre: ['action', 'adventure', 'drama'],
+    genre: 'drama',
     description: 'The life stories of the six men who raised the flag at the Battle of Iwo Jima, a turning point in World War II.',
     actors: ['Ryan Phillippe', 'Barry Pepper', 'Joseph Cross'],
     director: 'Clint Eastwood'
   },
   {
     id: 2,
-    title: 'Forrest Gump',
-    year: 1994,
-    genre: ['drama', 'romance'],
-    description: 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.',
-    actors: ['Tom Hanks', 'Robin Wright', 'Gary Sinise'],
+    title: 'Back to the Future',
+    year: 1985,
+    genre: 'comedy',
+    description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.',
+    actors: ['Michael J. Fox', 'Christopher Lloyd', 'Lea Thompson'],
     director: 'Robert Zemeckis'
   },
   {
     id: 3,
     title: 'Cast Away',
     year: 2000,
-    genre: ['adventure', 'drama', 'romance'],
+    genre: 'adventure',
     description: 'A FedEx executive undergoes a physical and emotional transformation after crash landing on a deserted island.',
     actors: ['Tom Hanks', 'Helen Hunt', 'Paul Sanchez'],
     director: 'Robert Zemeckis'
@@ -45,7 +45,7 @@ let movies = [
     id: 4,
     title: 'Milk',
     year: 2008,
-    genre: ['biography', 'drama'],
+    genre: 'biography',
     description: 'The story of Harvey Milk and his struggles as an American gay activist who fought for gay rights and became California\'s first openly gay elected official.',
     actors: ['Sean Penn', 'Emile Hirsch', 'Josh Brolin'],
     director: 'Gus Van Sant'
@@ -54,7 +54,7 @@ let movies = [
     id: 5,
     title: 'The Big Short',
     year: 2015,
-    genre: ['drama', 'biography', 'comedy'],
+    genre: 'drama',
     description: 'In 2006-2007 a group of investors bet against the US mortgage market. In their research, they discover how flawed and corrupt the market is.',
     actors: ['Christian Bale', 'Steve Carell', 'Ryan Gosling'],
     director: 'Adam McKay'
@@ -63,7 +63,7 @@ let movies = [
     id: 6,
     title: 'The Wolf of Wall Street',
     year: 2013,
-    genre: ['biography', 'crime', 'drama'],
+    genre: 'crime',
     description: 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.',
     actors: ['Leonardo DiCaprio', 'Jonah Hill', 'Margot Robbie'],
     director: 'Martin Scorsese'
@@ -72,7 +72,7 @@ let movies = [
     id: 7,
     title: 'Yesterday',
     year: 2019,
-    genre: ['comedy', 'fantasy', 'music'],
+    genre: 'comedy',
     description: 'A struggling musician realizes he\'s the only person on Earth who can remember The Beatles after waking up in an alternate timeline where they never existed.',
     actors: ['Himesh Patel', 'Lily James', 'Sophia Di Martino'],
     director: 'Danny Boyle'
@@ -81,7 +81,7 @@ let movies = [
     id: 8,
     title: 'Parasite',
     year: 2019,
-    genre: ['comedy', 'drama', 'thriller'],
+    genre: 'thriller',
     description: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.',
     actors: ['Kang-ho Song', 'Sun-kyun Lee', 'Yeo-jeong Cho'],
     director: 'Bong Joon Ho'
@@ -90,7 +90,7 @@ let movies = [
     id: 9,
     title: 'Patriots Day',
     year: 2016,
-    genre: ['action', 'crime', 'drama'],
+    genre: 'crime',
     description: 'The story of the 2013 Boston Marathon bombing and the aftermath, which includes the city-wide manhunt to find the terrorists responsible.',
     actors: ['Mark Wahlberg', 'Michelle Monaghan', 'J.K. Simmons'],
     director: 'Peter Berg'
@@ -99,10 +99,56 @@ let movies = [
     id: 10,
     title: 'Deepwater Horizon',
     year: 2016,
-    genre: ['action', 'drama', 'history'],
+    genre: 'action',
     description: 'A dramatization of the disaster in April 2010, when the offshore drilling rig called the Deepwater Horizon exploded, resulting in the worst oil spill in American history.',
     actors: ['Mark Wahlberg', 'Kurt Russell', 'Douglas M. Griffin'],
     director: 'Peter Berg'
+  },
+];
+let users = [
+  {
+  username: 'Kittekat14',
+  email: 'katrin_hofstetter@gmx.de',
+  favorites: ['Minions', 'Pets', 'Zoomania', 'Kung Fu Panda', 'Madagascar']
+  },
+  {
+  username: 'Huffipuff13',
+  email: 'lisa_weber@web.de',
+  favorites: []
+  },
+  {
+  username: 'Pete1973',
+  email: 'peter_schmidt@gmail.com',
+  favorites: []
+  },
+
+];
+let directors = [
+  {
+    name: 'Steven Spielberg',
+    bio: 'Steven Allan Spielberg is an American film director, producer, and screenwriter. He began his career in the New Hollywood era, and is one of the most commercially successful directors in history.'
+  },
+  {
+    name: 'Robert Zemeckis',
+    bio: 'Robert Lee Zemeckis is an American film director, film producer, and screenwriter who is frequently credited as an innovator in visual effects. He first came to public attention as the director of Romancing the Stone (1984) and the science-fiction comedy Back to the Future, as well as the live-action/animated comedy Who Framed Roger Rabbit (1988).'
+  },
+  {
+    name: 'Martin Scorsese',
+    bio: 'Martin Charles Scorsese is an American film director, producer, screenwriter, and actor. One of the major figures of the New Hollywood era, he is widely regarded as one of the greatest and most influential directors in film history.'
+  },
+];
+let genres = [
+  {
+    name: 'action',
+    description: 'Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. They can feature superheroes, martial arts, or exciting stunts. '
+  },
+  {
+    name: 'adventure',
+    description: 'The adventure genre is so similar to the action genre that adventure films are often categorized as action/adventure movies. They are usually set in an exotic, far away, or unfamiliar locale. '
+  },
+  {
+    name: 'drama',
+    description: 'The drama genre features stories with high stakes and a lot of conflicts. They’re plot-driven and demand that every character and scene move the story forward. '
   },
 ];
 
@@ -116,7 +162,7 @@ app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
-//GET movies by title //only thing that works, but I don't HAVE the other arrays (users, directors, genres,..) yet!
+//GET movies by title 
 app.get('/movies/:title', (req,res) => {
   const movie = movies.find(m => m.title === req.params.title);
   if(!movie) {
@@ -127,7 +173,7 @@ app.get('/movies/:title', (req,res) => {
 })
 //GET directors by name
 app.get('/directors/:name', (req,res) => {
-  const director = movies.find(d => d.director === req.params.name);
+  const director = directors.find(d => d.name === req.params.name);
   if(!director) {
     res.status(404).send('The director with this name was not found.');
   } else {
@@ -136,7 +182,7 @@ app.get('/directors/:name', (req,res) => {
 })
 //GET genres by name
 app.get('/genres/:name', (req,res) => {
-  const genre = movies.find(g => g.genre === req.params.name);
+  const genre = genres.find(g => g.name === req.params.name);
   if(!genre) {
     res.status(404).send('The genre with this name was not found.');
   } else {
@@ -146,73 +192,66 @@ app.get('/genres/:name', (req,res) => {
 
 // POST Methods 
 // Creating new User Account by username
-app.post('/users/:username', (req, res) => {
-  const newUser = req.params.username;
-  if (!newUser) {
-    const message = 'Missing Username in Request Parameters!';
+app.post('/users', (req, res) => {
+  const newUser = req.body;
+  if (!newUser.username) {
+    const message = 'Missing Username in Request Body!';
     res.status(400).send(message);
   } else {
     newUser.id = uuid.v4();
     users.push(newUser);
-    res.status(201).send(`${newUser}, you have sucessfully created a new account.`);
+    res.status(201).send(`${newUser.username}, you have sucessfully created a new account.`);
   }
 });
-// Creating new Movie Playlist by title
-app.post('/users/playlists/:title', (req, res) => {
-  let newPlaylist = req.params.title;
-  if (!newPlaylist) {
-    const message = 'Missing Playlist Title!';
+
+//PUT Request
+// Changing username
+app.put('/users/:username', (req, res) => {
+  let newUsername = req.body;
+  if(!newUsername.username){
+    const message = 'Missing new Username in the Request Body';
     res.status(400).send(message);
   } else {
-    newPlaylist.id = uuid.v4();
-    playlists.push(newPlaylist);
-    res.status(201).send(`Playlist with title ${newPlaylist} has been added to your playlists.`);
+    res.status(201).send(`You successfully changed your username to ${newUsername.username}.`);
   }
 });
+
 
 // DELETE Requests
 // Deleting user by username
 app.delete('/users/:username', (req, res) => {
-  let userToDelete = req.params.username;
+  // user with right username is stored in variable let userToDelete
+  let userToDelete = users.find((user) => { return user.username === req.params.username });
+
   if (!userToDelete) {
     const message = 'There is no user with this username.';
     res.status(400).send(message);
   } else {
-    res.status(201).send(`The user with the username ${userToDelete} has been deleted.`);
+    users = users.filter(u => { return u.username !== req.params.username });
+    res.status(201).send(`The user with the username ${userToDelete.username} has been deleted.`);
   }
 });
-// Deleting movie from playlist by movie
-app.delete('/users/:username/:playlists/:title/:movie', (req, res) => {
-  let movieToDelete = req.params.movie;
+
+// NOT Working :
+// Deleting movie from list of favorites
+app.delete('/users/:username/favorites/:title', (req, res) => {
+  let movieToDelete = favorites.find((movie) => { return movie === req.params.title });
   if (!movieToDelete) {
-    const message = 'There is no movie with this title.';
+    const message = 'There is no movie with this title in the favorites list.';
     res.status(400).send(message);
   } else {
     res.status(201).send(`The movie with the title ${movieToDelete} has been deleted.`);
   }
 });
-
-//PUT Requests
-//Adding new movie to an existing playlist of a user
-app.put('/users/:username/:playlists/:title/:movie', (req, res) => {
-  let newMovie = req.params.movie;
-  let user = req.params.username;
-  if(!newMovie){
-    const message = 'Missing new Movie title in the Request Parameters';
+// Adding new movie to list of favorite movies (NEW with PATCH) 
+app.patch('/users/:username', (req, res) => {
+  let favorite = req.body;
+  if (!favorite.title) {
+    const message = 'Missing Favorite Movie Title in Request Body!';
     res.status(400).send(message);
   } else {
-    user.playlists.movies.push(newMovie);
-    res.status(201).send(`Movie '${newMovie}' has been added to your playlist.`);
-  }
-});     
-//Updating user account (changing username)
-app.put('/users/:id/:username', (req, res) => {
-  let newUserName = req.params.username;
-  if (!newUserName) {
-    const message = 'Missing new Username in Request Parameters';
-    res.status(400).send(message);
-  } else {
-    res.status(201).send(`Username has been changed into ${newUserName}.`);
+    favorites.push(favorite);
+    res.status(201).send(`The movie with the title ${favorite.title} has been added to your list of favorite movies.`);
   }
 });
 
