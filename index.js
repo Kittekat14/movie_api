@@ -15,113 +15,238 @@ app.use(bodyParser.urlencoded({
 
 let movies = [
   {
-    id: 1,
+    movieid: 1,
     title: 'Flags of our Fathers',
     year: 2006,
-    genre: 'drama',
+    genre: {
+      name: 'drama',
+      description: 'The drama genre features stories with high stakes and a lot of conflicts. They\'re plot-driven and demand that every character and scene move the story forward. Dramas follow a clearly defined narrative plot structure, portraying real-life scenarios or extreme situations with emotionally-driven characters.'
+    },
     description: 'The life stories of the six men who raised the flag at the Battle of Iwo Jima, a turning point in World War II.',
     actors: ['Ryan Phillippe', 'Barry Pepper', 'Joseph Cross'],
-    director: 'Clint Eastwood'
+    director: {
+      name: 'Clint Eastwood',
+      bio: 'Clinton Eastwood Jr. is an American actor, film director, composer, and producer. An Academy Award nominee for Best Actor, Eastwood won Best Director and Best Picture for his Western film Unforgiven (1992) and his sports drama Million Dollar Baby (2004).',
+      birthdate: '1930-05-31'
+    },
+    imageUrl: 'https://www.imdb.com/title/tt0418689/mediaviewer/rm2742196480/?ref_=tt_ov_i',
+    featured: false
   },
   {
-    id: 2,
+    movieid: 2,
     title: 'Back to the Future',
     year: 1985,
     genre: 'comedy',
     description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.',
     actors: ['Michael J. Fox', 'Christopher Lloyd', 'Lea Thompson'],
-    director: 'Robert Zemeckis'
+    director: 'Robert Zemeckis',
+    imageUrl: 'https://www.imdb.com/title/tt0088763/mediaviewer/rm554638848/?ref_=tt_ov_i',
+    featured: true
   },
   {
-    id: 3,
+    movieid: 3,
     title: 'Cast Away',
     year: 2000,
     genre: 'adventure',
     description: 'A FedEx executive undergoes a physical and emotional transformation after crash landing on a deserted island.',
     actors: ['Tom Hanks', 'Helen Hunt', 'Paul Sanchez'],
-    director: 'Robert Zemeckis'
+    director: 'Robert Zemeckis',
+    imageUrl: 'https://www.imdb.com/title/tt0162222/mediaviewer/rm381427456/?ref_=tt_ov_i',
+    featured: false
   },
   {
-    id: 4,
+    movieid: 4,
     title: 'Milk',
     year: 2008,
     genre: 'biography',
     description: 'The story of Harvey Milk and his struggles as an American gay activist who fought for gay rights and became California\'s first openly gay elected official.',
     actors: ['Sean Penn', 'Emile Hirsch', 'Josh Brolin'],
-    director: 'Gus Van Sant'
+    director: 'Gus Van Sant',
+    imageUrl: 'https://www.imdb.com/title/tt1013753/mediaviewer/rm1538495488/?ref_=tt_ov_i',
+    featured: true
   },
   {
-    id: 5,
+    movieid: 5,
     title: 'The Big Short',
     year: 2015,
     genre: 'drama',
     description: 'In 2006-2007 a group of investors bet against the US mortgage market. In their research, they discover how flawed and corrupt the market is.',
     actors: ['Christian Bale', 'Steve Carell', 'Ryan Gosling'],
-    director: 'Adam McKay'
+    director: 'Adam McKay',
+    imageUrl: 'https://www.imdb.com/title/tt1596363/mediaviewer/rm3249474304/?ref_=tt_ov_i',
+    featured: false
   },
   {
-    id: 6,
+    movieid: 6,
     title: 'The Wolf of Wall Street',
     year: 2013,
     genre: 'crime',
     description: 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.',
     actors: ['Leonardo DiCaprio', 'Jonah Hill', 'Margot Robbie'],
-    director: 'Martin Scorsese'
+    director: 'Martin Scorsese',
+    imageUrl: 'https://www.imdb.com/title/tt0993846/mediaviewer/rm2842940160/?ref_=tt_ov_i',
+    featured: false
   },
   {
-    id: 7,
+    movieid: 7,
     title: 'Yesterday',
     year: 2019,
     genre: 'comedy',
     description: 'A struggling musician realizes he\'s the only person on Earth who can remember The Beatles after waking up in an alternate timeline where they never existed.',
     actors: ['Himesh Patel', 'Lily James', 'Sophia Di Martino'],
-    director: 'Danny Boyle'
+    director: 'Danny Boyle',
+    imageUrl: 'https://www.imdb.com/title/tt8079248/mediaviewer/rm1175416320/?ref_=tt_ov_i',
+    featured: true
   },
   {
-    id: 8,
+    movieid: 8,
     title: 'Parasite',
     year: 2019,
     genre: 'thriller',
     description: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.',
     actors: ['Kang-ho Song', 'Sun-kyun Lee', 'Yeo-jeong Cho'],
-    director: 'Bong Joon Ho'
+    director: 'Bong Joon Ho',
+    imageUrl: 'https://www.imdb.com/title/tt6751668/mediaviewer/rm3194916865/?ref_=tt_ov_i',
+    featured: false
   },
   {
-    id: 9,
+    movieid: 9,
     title: 'Patriots Day',
     year: 2016,
     genre: 'crime',
     description: 'The story of the 2013 Boston Marathon bombing and the aftermath, which includes the city-wide manhunt to find the terrorists responsible.',
     actors: ['Mark Wahlberg', 'Michelle Monaghan', 'J.K. Simmons'],
-    director: 'Peter Berg'
+    director: 'Peter Berg',
+    imageUrl: 'https://www.imdb.com/title/tt4572514/mediaviewer/rm1786188800/?ref_=tt_ov_i',
+    featured: false
   },
   {
-    id: 10,
+    movieid: 10,
     title: 'Deepwater Horizon',
     year: 2016,
     genre: 'action',
     description: 'A dramatization of the disaster in April 2010, when the offshore drilling rig called the Deepwater Horizon exploded, resulting in the worst oil spill in American history.',
     actors: ['Mark Wahlberg', 'Kurt Russell', 'Douglas M. Griffin'],
-    director: 'Peter Berg'
+    director: 'Peter Berg',
+    imageUrl: 'https://www.imdb.com/title/tt1860357/mediaviewer/rm3273657088/?ref_=tt_ov_i',
+    featured: false
   },
+  {
+    movieid: 11,
+    title: 'Shutter Island',
+    year: 2010,
+    genre: 'thriller',
+    description: 'In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.',
+    actors: ['Leonardo Di Caprio', 'Emily Mortimer', 'Mark Ruffalo'],
+    director: 'Martin Scorsese',
+    imageUrl: 'https://www.imdb.com/title/tt1130884/mediaviewer/rm1814907136/?ref_=tt_ov_i',
+    featured: false
+  },
+  {
+    movieid: 12,
+    title: 'Catch Me If You Can',
+    year: 2002,
+    genre: 'biography',
+    description: 'Barely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.',
+    actors: ['Leonardo Di Caprio', 'Tom Hanks', 'Amy Adams'],
+    director: 'Steven Spielberg',
+    imageUrl: 'https://www.imdb.com/title/tt0264464/mediaviewer/rm3911489536/?ref_=tt_ov_i',
+    featured: false
+  },
+  {
+    movieid: 13,
+    title: 'Jexi',
+    year: 2019,
+    genre: 'comedy',
+    description: 'Phil makes top 10 pop lists at work. His only "friend" is cellphone Siri. His new phone includes AI helper Jexi, who improves/controls his social life.',
+    actors: ['Adam Devine', 'Alexandra Shipp', 'Rose Byrne'],
+    director: 'Jon Lucas',
+    imageUrl: 'https://www.imdb.com/title/tt9354944/mediaviewer/rm219780609/?ref_=tt_ov_i',
+    featured: false
+  },
+  {
+    movieid: 14,
+    title: 'Forrest Gump',
+    year: 1994,
+    genre: 'romance',
+    description: 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.',
+    actors: ['Tom Hanks', 'Robin Wright', 'Gary Sinise'],
+    director: 'Robert Zemeckis',
+    imageUrl: 'https://www.imdb.com/title/tt0109830/mediaviewer/rm1954748672/?ref_=tt_ov_i',
+    featured: true
+  },
+  {
+    movieid: 15,
+    title: 'Knives Out',
+    year: 2020,
+    genre: 'crime',
+    description: 'A detective investigates the death of a patriarch of an eccentric, combative family.',
+    actors: ['Daniel Craig', 'Chris Evans', 'Jamie Lee Curtis'],
+    director: 'Rian Johnson',
+    imageUrl: 'https://www.imdb.com/title/tt8946378/mediaviewer/rm2569376769/?ref_=tt_ov_i',
+    featured: true
+  },
+  {
+    movieid: 16,
+    title: 'Slumdog Millionaire',
+    year: 2008,
+    genre: 'drama',
+    description: 'A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?".',
+    actors: ['Dev Patel', 'Freida Pinto', 'Saurabh Shukla'],
+    director: 'Danny Boyle',
+    imageUrl: 'https://www.imdb.com/title/tt1010048/mediaviewer/rm2952200704/?ref_=tt_ov_i',
+    featured: true
+  }
 ];
 let users = [
   {
-  username: 'Kittekat14',
-  email: 'katrin_hofstetter@gmx.de',
-  favorites: ['Minions', 'Pets', 'Zoomania', 'Kung Fu Panda', 'Madagascar']
+    userid: 1,
+    username: 'Kittekat14',
+    password: 'GinTonic8080',
+    email: 'katrin_hofstetter@gmx.de',
+    birthdate: new Date('1992-06-29'),
+    favorites: [2, 14, 7]
   },
   {
-  username: 'Huffipuff13',
-  email: 'lisa_weber@web.de',
-  favorites: []
+    userid: 2,
+    username: 'Huffipuff13',
+    password: 'harrypotter90',
+    email: 'lisa_weber@web.de',
+    birthdate: new Date('2000-08-20'),
+    favorites: [1, 5, 6]
   },
   {
-  username: 'Pete1973',
-  email: 'peter_schmidt@gmail.com',
-  favorites: []
+    userid: 3,
+    username: 'Pete1973',
+    password: 'Elisabeth89',
+    email: 'peter_schmidt@gmail.com',
+    birthdate: new Date('1973-04-30'),
+    favorites: [16, 11, 4]
   },
-
+  {
+    userid: 4,
+    username: 'Paettypaett92',
+    password: 'RamazottiRosato',
+    email: 'patricia92@web.de',
+    birthdate: new Date('1992-08-28'),
+    favorites: [4, 16, 8, 5]
+  },
+  {
+    userid: 5,
+    username: 'Giraffenküken',
+    password: 'Daughtry089',
+    email: 'simone_kefer@gmail.com',
+    birthdate: new Date('1992-07-09'),
+    favorites: [5, 11, 1]
+  },
+  {
+    userid: 6,
+    username: 'Mariano2709',
+    password: 'netflix2019',
+    email: 'marianoZA1984@gmail.com',
+    birthdate: new Date('1984-09-27'),
+    favorites: [9, 10, 11]
+  }
 ];
 let directors = [
   {
@@ -149,6 +274,26 @@ let genres = [
   {
     name: 'drama',
     description: 'The drama genre features stories with high stakes and a lot of conflicts. They’re plot-driven and demand that every character and scene move the story forward. '
+  },
+  {
+    name: 'romance',
+    description: 'Romance films are love stories. They center around two protagonists exploring some of the elements of love like relationships, sacrifice, marriage, obsession, or destruction. '
+  },
+  {
+    name: 'comedy',
+    description: 'Comedy films are funny and entertaining. The films in this genre center around a comedic premise—usually putting someone in a challenging, amusing, or humorous situation they’re not prepared to handle. '
+  },
+  {
+    name: 'crime',
+    description: 'Crime film, in the broadest sense, is a film genre inspired by and analogous to the crime fiction literary genre. Films of this genre generally involve various aspects of crime and its detection. '
+  },
+  {
+    name: 'thriller',
+    description: 'Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience. '
+  },
+  {
+    name: 'biography',
+    description: 'A biographical film, or biopic, is a film that dramatizes the life of a non-fictional or historically-based person or people. Such films show the life of a historical person and the central character\'s real name is used. '
   },
 ];
 
@@ -232,7 +377,7 @@ app.delete('/users/:username', (req, res) => {
   }
 });
 
-// NOT Working :
+// NOT WORKING :
 // Deleting movie from list of favorites
 app.delete('/users/:username/favorites/:title', (req, res) => {
   let movieToDelete = favorites.find((movie) => { return movie === req.params.title });
@@ -243,7 +388,7 @@ app.delete('/users/:username/favorites/:title', (req, res) => {
     res.status(201).send(`The movie with the title ${movieToDelete} has been deleted.`);
   }
 });
-// Adding new movie to list of favorite movies (NEW with PATCH) 
+// Adding new movie to list of favorites (NEW with PATCH) 
 app.patch('/users/:username', (req, res) => {
   let favorite = req.body;
   if (!favorite.title) {
