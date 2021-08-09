@@ -251,15 +251,43 @@ let users = [
 let directors = [
   {
     name: 'Steven Spielberg',
-    bio: 'Steven Allan Spielberg is an American film director, producer, and screenwriter. He began his career in the New Hollywood era, and is one of the most commercially successful directors in history.'
+    bio: 'Steven Allan Spielberg is an American film director, producer, and screenwriter. He began his career in the New Hollywood era, and is one of the most commercially successful directors in history.',
+    birthyear: '1946'
+  },
+  {
+    name: 'Clint Eastwood',
+    bio: 'Clinton Eastwood Jr. is an American actor, film director, composer, and producer. An Academy Award nominee for Best Actor, Eastwood won Best Director and Best Picture for his Western film Unforgiven (1992) and his sports drama Million Dollar Baby (2004).',
+    birthyear: '1930'
   },
   {
     name: 'Robert Zemeckis',
-    bio: 'Robert Lee Zemeckis is an American film director, film producer, and screenwriter who is frequently credited as an innovator in visual effects. He first came to public attention as the director of Romancing the Stone (1984) and the science-fiction comedy Back to the Future, as well as the live-action/animated comedy Who Framed Roger Rabbit (1988).'
+    bio: 'Robert Lee Zemeckis is an American film director, film producer, and screenwriter who is frequently credited as an innovator in visual effects. He first came to public attention as the director of Romancing the Stone (1984) and the science-fiction comedy Back to the Future, as well as the live-action/animated comedy Who Framed Roger Rabbit (1988).',
+    birthyear: '1951'
   },
   {
     name: 'Martin Scorsese',
-    bio: 'Martin Charles Scorsese is an American film director, producer, screenwriter, and actor. One of the major figures of the New Hollywood era, he is widely regarded as one of the greatest and most influential directors in film history.'
+    bio: 'Martin Charles Scorsese is an American film director, producer, screenwriter, and actor. One of the major figures of the New Hollywood era, he is widely regarded as one of the greatest and most influential directors in film history.',
+    birthyear: '1942'
+  },
+  {
+    name: 'Gus Van Sant',
+    bio: 'Gus Green Van Sant Jr. is an American film director, screenwriter, painter, photographer, musician, and author who has earned acclaim as both an independent and mainstream filmmaker. His films typically deal with themes of marginalized subcultures, in particular homosexuality.',
+    birthyear: '1952'
+  },
+  {
+    name: 'Adam McKay',
+    bio: 'Adam McKay is an American film and television director, producer, screenwriter, and comedian. McKay began his career in the 1990s as a head writer for the NBC sketch comedy show Saturday Night Live for two seasons and is the co-founder of the Upright Citizens Brigade.',
+    birthyear: '1968'
+  },
+  {
+    name: 'Danny Boyle',
+    bio: 'Daniel Francis Boyle is an English film, television, and stage director and producer. He is known for his work on films including Shallow Grave, Trainspotting, The Beach, 28 Days Later, Sunshine, Slumdog Millionaire, 127 Hours, Steve Jobs and Yesterday.',
+    birthyear: '1956'
+  },
+  {
+    name: 'Peter Berg',
+    bio: 'Peter Berg is an American actor, director, writer, and producer. His directorial film works include the black comedy Very Bad Things (1998), the action comedy The Rundown (2003), the sports drama Friday Night Lights (2004), the action thriller The Kingdom (2007), the superhero comedy-drama Hancock (2008), the military science fiction war film Battleship (2012).',
+    birthyear: '1964'
   },
 ];
 let genres = [
