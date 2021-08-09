@@ -200,7 +200,6 @@ let movies = [
 ];
 let users = [
   {
-    userid: 1,
     username: 'Kittekat14',
     password: 'GinTonic8080',
     email: 'katrin_hofstetter@gmx.de',
@@ -208,7 +207,6 @@ let users = [
     favorites: [2, 14, 7]
   },
   {
-    userid: 2,
     username: 'Huffipuff13',
     password: 'harrypotter90',
     email: 'lisa_weber@web.de',
@@ -216,7 +214,6 @@ let users = [
     favorites: [1, 5, 6]
   },
   {
-    userid: 3,
     username: 'Pete1973',
     password: 'Elisabeth89',
     email: 'peter_schmidt@gmail.com',
@@ -224,7 +221,6 @@ let users = [
     favorites: [16, 11, 4]
   },
   {
-    userid: 4,
     username: 'Paettypaett92',
     password: 'RamazottiRosato',
     email: 'patricia92@web.de',
@@ -232,7 +228,6 @@ let users = [
     favorites: [4, 16, 8, 5]
   },
   {
-    userid: 5,
     username: 'Giraffenküken',
     password: 'Daughtry089',
     email: 'simone_kefer@gmail.com',
@@ -240,7 +235,6 @@ let users = [
     favorites: [5, 11, 1]
   },
   {
-    userid: 6,
     username: 'Mariano2709',
     password: 'netflix2019',
     email: 'marianoZA1984@gmail.com',
