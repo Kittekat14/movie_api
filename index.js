@@ -205,7 +205,11 @@ let users = [
     password: 'GinTonic8080',
     email: 'katrin_hofstetter@gmx.de',
     birthdate: new Date('1992-06-29'),
-    favorites: ['Cast Away', 'Forrest Gump', 'Yesterday']
+    favorites: [
+      {title: 'Cast Away'},
+      {title: 'Forrest Gump'}, 
+      {title: 'Yesterday'}
+    ]
   },
   {
     _id: 2,
@@ -389,7 +393,6 @@ app.put('/users/:username', (req, res) => {
   }
 });
 
-
 // DELETE Requests
 // Deleting user by username
 app.delete('/users/:username', (req, res) => {
@@ -406,8 +409,7 @@ app.delete('/users/:username', (req, res) => {
 });
 
 // NOT WORKING :
-
-// Adding new movie to list of favorites (NEW with PATCH) 
+// Adding new movie to favorites (NEW with PATCH) 
 app.patch('/users/:username/favorites', (req, res) => {
   let favorite = req.body;
   if (!favorite.title) {
@@ -419,7 +421,7 @@ app.patch('/users/:username/favorites', (req, res) => {
   }
 });
 
-// Deleting movie from list of favorites
+// Deleting movie from favorites by title
 app.delete('/users/:username/favorites/:title', (req, res) => {
   let movieToDelete = favorites.find((title) => { return title === req.params.title });
   if (!movieToDelete) {
