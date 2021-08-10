@@ -377,7 +377,7 @@ app.post('/users', (req, res) => {
   } else {
     newUser.id = uuid.v4();
     users.push(newUser);
-    res.status(201).send(`${newUser.username}, you have sucessfully created a new account.`);
+    res.status(201).send(newUser);
   }
 });
 
