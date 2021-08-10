@@ -36,7 +36,10 @@ let movies = [
     movieid: 2,
     title: 'Back to the Future',
     year: 1985,
-    genre: 'comedy',
+    genre: {
+      name: 'comedy',
+      description: 'Comedy films are funny and entertaining. The films in this genre center around a comedic premise—usually putting someone in a challenging, amusing, or humorous situation they’re not prepared to handle.'
+    },
     description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.',
     actors: ['Michael J. Fox', 'Christopher Lloyd', 'Lea Thompson'],
     director: 'Robert Zemeckis',
@@ -47,7 +50,10 @@ let movies = [
     movieid: 3,
     title: 'Cast Away',
     year: 2000,
-    genre: 'adventure',
+    genre: {
+      name: 'adventure',
+      description: 'Adventure films are a genre of film whose plots feature elements of travel. They typically involve protagonists who must leave their home or place of comfort and go to far away lands to fulfill a goal.'
+    },
     description: 'A FedEx executive undergoes a physical and emotional transformation after crash landing on a deserted island.',
     actors: ['Tom Hanks', 'Helen Hunt', 'Paul Sanchez'],
     director: 'Robert Zemeckis',
@@ -58,7 +64,10 @@ let movies = [
     movieid: 4,
     title: 'Milk',
     year: 2008,
-    genre: 'biography',
+    genre: {
+      name: 'biography',
+      description: 'A biographical film, or biopic, is a film that dramatizes the life of a non-fictional or historically-based person or people. Such films show the life of a historical person and the central character\'s real name is used.'
+    },
     description: 'The story of Harvey Milk and his struggles as an American gay activist who fought for gay rights and became California\'s first openly gay elected official.',
     actors: ['Sean Penn', 'Emile Hirsch', 'Josh Brolin'],
     director: 'Gus Van Sant',
@@ -69,7 +78,10 @@ let movies = [
     movieid: 5,
     title: 'The Big Short',
     year: 2015,
-    genre: 'drama',
+    genre: {
+      name: 'drama',
+      description: 'The drama genre features stories with high stakes and a lot of conflicts. They\'re plot-driven and demand that every character and scene move the story forward. Dramas follow a clearly defined narrative plot structure, portraying real-life scenarios or extreme situations with emotionally-driven characters.'
+    },
     description: 'In 2006-2007 a group of investors bet against the US mortgage market. In their research, they discover how flawed and corrupt the market is.',
     actors: ['Christian Bale', 'Steve Carell', 'Ryan Gosling'],
     director: 'Adam McKay',
@@ -80,7 +92,10 @@ let movies = [
     movieid: 6,
     title: 'The Wolf of Wall Street',
     year: 2013,
-    genre: 'crime',
+    genre: {
+      name: 'crime',
+      description: 'Crime film, in the broadest sense, is a film genre inspired by and analogous to the crime fiction literary genre. Films of this genre generally involve various aspects of crime and its detection.'
+    },
     description: 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.',
     actors: ['Leonardo DiCaprio', 'Jonah Hill', 'Margot Robbie'],
     director: 'Martin Scorsese',
@@ -91,7 +106,10 @@ let movies = [
     movieid: 7,
     title: 'Yesterday',
     year: 2019,
-    genre: 'comedy',
+    genre: {
+      name: 'comedy',
+      description: 'Comedy films are funny and entertaining. The films in this genre center around a comedic premise—usually putting someone in a challenging, amusing, or humorous situation they’re not prepared to handle.'
+    },
     description: 'A struggling musician realizes he\'s the only person on Earth who can remember The Beatles after waking up in an alternate timeline where they never existed.',
     actors: ['Himesh Patel', 'Lily James', 'Sophia Di Martino'],
     director: 'Danny Boyle',
@@ -102,7 +120,10 @@ let movies = [
     movieid: 8,
     title: 'Parasite',
     year: 2019,
-    genre: 'thriller',
+    genre: {
+      name: 'thriller',
+      description: 'Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience.'
+    },
     description: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.',
     actors: ['Kang-ho Song', 'Sun-kyun Lee', 'Yeo-jeong Cho'],
     director: 'Bong Joon Ho',
@@ -113,7 +134,10 @@ let movies = [
     movieid: 9,
     title: 'Patriots Day',
     year: 2016,
-    genre: 'crime',
+    genre: {
+      name: 'crime',
+      description: 'Crime film, in the broadest sense, is a film genre inspired by and analogous to the crime fiction literary genre. Films of this genre generally involve various aspects of crime and its detection.'
+    },
     description: 'The story of the 2013 Boston Marathon bombing and the aftermath, which includes the city-wide manhunt to find the terrorists responsible.',
     actors: ['Mark Wahlberg', 'Michelle Monaghan', 'J.K. Simmons'],
     director: 'Peter Berg',
@@ -124,7 +148,10 @@ let movies = [
     movieid: 10,
     title: 'Deepwater Horizon',
     year: 2016,
-    genre: 'action',
+    genre: {
+      name: 'action',
+      description: 'Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases.'
+    },
     description: 'A dramatization of the disaster in April 2010, when the offshore drilling rig called the Deepwater Horizon exploded, resulting in the worst oil spill in American history.',
     actors: ['Mark Wahlberg', 'Kurt Russell', 'Douglas M. Griffin'],
     director: 'Peter Berg',
@@ -135,7 +162,10 @@ let movies = [
     movieid: 11,
     title: 'Shutter Island',
     year: 2010,
-    genre: 'thriller',
+    genre: {
+      name: 'thriller',
+      description: 'Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience.'
+    },
     description: 'In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.',
     actors: ['Leonardo Di Caprio', 'Emily Mortimer', 'Mark Ruffalo'],
     director: 'Martin Scorsese',
@@ -146,7 +176,10 @@ let movies = [
     movieid: 12,
     title: 'Catch Me If You Can',
     year: 2002,
-    genre: 'biography',
+    genre: {
+      name: 'biography',
+      description: 'A biographical film, or biopic, is a film that dramatizes the life of a non-fictional or historically-based person or people. Such films show the life of a historical person and the central character\'s real name is used.'
+    },
     description: 'Barely 21 yet, Frank is a skilled forger who has passed as a doctor, lawyer and pilot. FBI agent Carl becomes obsessed with tracking down the con man, who only revels in the pursuit.',
     actors: ['Leonardo Di Caprio', 'Tom Hanks', 'Amy Adams'],
     director: 'Steven Spielberg',
@@ -157,7 +190,10 @@ let movies = [
     movieid: 13,
     title: 'Jexi',
     year: 2019,
-    genre: 'comedy',
+    genre: {
+      name: 'comedy',
+      description: 'Comedy films are funny and entertaining. The films in this genre center around a comedic premise—usually putting someone in a challenging, amusing, or humorous situation they’re not prepared to handle.'
+    },
     description: 'Phil makes top 10 pop lists at work. His only "friend" is cellphone Siri. His new phone includes AI helper Jexi, who improves/controls his social life.',
     actors: ['Adam Devine', 'Alexandra Shipp', 'Rose Byrne'],
     director: 'Jon Lucas',
@@ -168,7 +204,10 @@ let movies = [
     movieid: 14,
     title: 'Forrest Gump',
     year: 1994,
-    genre: 'romance',
+    genre: {
+      name: 'romance',
+      description: 'Romance films are love stories. They center around two protagonists exploring some of the elements of love like relationships, sacrifice, marriage, obsession, or destruction.'
+    },
     description: 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.',
     actors: ['Tom Hanks', 'Robin Wright', 'Gary Sinise'],
     director: 'Robert Zemeckis',
@@ -179,7 +218,10 @@ let movies = [
     movieid: 15,
     title: 'Knives Out',
     year: 2020,
-    genre: 'crime',
+    genre: {
+      name: 'crime',
+      description: 'Crime film, in the broadest sense, is a film genre inspired by and analogous to the crime fiction literary genre. Films of this genre generally involve various aspects of crime and its detection.'
+    },
     description: 'A detective investigates the death of a patriarch of an eccentric, combative family.',
     actors: ['Daniel Craig', 'Chris Evans', 'Jamie Lee Curtis'],
     director: 'Rian Johnson',
@@ -190,7 +232,10 @@ let movies = [
     movieid: 16,
     title: 'Slumdog Millionaire',
     year: 2008,
-    genre: 'drama',
+    genre: {
+      name: 'drama',
+      description: 'The drama genre features stories with high stakes and a lot of conflicts. They\'re plot-driven and demand that every character and scene move the story forward. Dramas follow a clearly defined narrative plot structure, portraying real-life scenarios or extreme situations with emotionally-driven characters.'
+    },
     description: 'A Mumbai teenager reflects on his life after being accused of cheating on the Indian version of "Who Wants to be a Millionaire?".',
     actors: ['Dev Patel', 'Freida Pinto', 'Saurabh Shukla'],
     director: 'Danny Boyle',
