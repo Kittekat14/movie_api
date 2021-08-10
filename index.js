@@ -205,7 +205,7 @@ let users = [
     password: 'GinTonic8080',
     email: 'katrin_hofstetter@gmx.de',
     birthdate: new Date('1992-06-29'),
-    favorites: [2, 14, 7]
+    favorites: ['Cast Away', 'Forrest Gump', 'Yesterday']
   },
   {
     _id: 2,
@@ -406,18 +406,9 @@ app.delete('/users/:username', (req, res) => {
 });
 
 // NOT WORKING :
-// Deleting movie from list of favorites
-app.delete('/users/:username/favorites/:title', (req, res) => {
-  let movieToDelete = favorites.find((movie) => { return movie === req.params.title });
-  if (!movieToDelete) {
-    const message = 'There is no movie with this title in the favorites list.';
-    res.status(400).send(message);
-  } else {
-    res.status(201).send(`The movie with the title ${movieToDelete} has been deleted.`);
-  }
-});
+
 // Adding new movie to list of favorites (NEW with PATCH) 
-app.patch('/users/:username', (req, res) => {
+app.patch('/users/:username/favorites', (req, res) => {
   let favorite = req.body;
   if (!favorite.title) {
     const message = 'Missing Favorite Movie Title in Request Body!';
@@ -425,6 +416,17 @@ app.patch('/users/:username', (req, res) => {
   } else {
     favorites.push(favorite);
     res.status(201).send(`The movie with the title ${favorite.title} has been added to your list of favorite movies.`);
+  }
+});
+
+// Deleting movie from list of favorites
+app.delete('/users/:username/favorites/:title', (req, res) => {
+  let movieToDelete = favorites.find((title) => { return title === req.params.title });
+  if (!movieToDelete) {
+    const message = 'There is no movie with this title in the favorites list.';
+    res.status(400).send(message);
+  } else {
+    res.status(201).send(`The movie with the title ${movieToDelete} has been deleted.`);
   }
 });
 
