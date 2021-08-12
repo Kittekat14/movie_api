@@ -1,28 +1,28 @@
 const mongoose = require('mongoose');
 
 let movieSchema = mongoose.Schema({
-  Title: {type: String, required: true},
-  Description: {type: String, required: true},
-  Genre: {
-    Name: String,
-    Description: String
+  title: {type: String, required: true},
+  description: {type: String, required: true},
+  genre: {
+    name: String,
+    description: String
   },
-  Director: {
-    Name: String,
-    Bio: String,
-    Birthyear: Date
+  director: {
+    name: String,
+    bio: String,
+    birthyear: Date
   },
-  Actors: [String],
-  ImageUrl: String,
-  Featured: Boolean
+  actors: [String],
+  imageUrl: String,
+  featured: Boolean
 });
 
 let userSchema = mongoose.Schema({
-  Username: {type: String, required: true},
-  Password: {type: String, required: true},
-  Email: {type: String, required: true},
-  Birthdate: Date,
-  Favorites: [{ type: mongoose.Schema.Types.MovieId, ref: 'Movie' }]
+  username: {type: String, required: true},
+  password: {type: String, required: true},
+  email: {type: String, required: true},
+  birthdate: Date,
+  favorites: [{ type: mongoose.Schema.Types.MovieId, ref: 'Movie' }]
 });
 
 let Movie = mongoose.model('Movie', movieSchema); //you name it ('Movie' or 'User') first and then point to the created variable 
