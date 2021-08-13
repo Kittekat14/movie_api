@@ -75,7 +75,7 @@
     </tr>
     <tr>
       <td>users can deregister</td>
-      <td>/users/:Username</td>
+      <td>/users/:username</td>
       <td>DELETE</td>
       <td>none</td>
       <td>simple text message that user with username was deleted</td>
@@ -89,7 +89,7 @@
     </tr>
     <tr>
       <td>users can add movie titles to their list of favorites</td>
-      <td>/users/:Username/movies/:MovieId</td>
+      <td>/users/:username/movies/:movieid</td>
       <td>PATCH</td>
       <td>e.g. {
         movieid: 4,
@@ -101,7 +101,7 @@
     </tr>
     <tr>
       <td>users can delete movie titles (= :title) from their list of favorites</td>
-      <td>/users/:Username/movies/:MovieId</td>
+      <td>/users/:username/favorites/:movieid</td>
       <td>DELETE</td>
       <td>none</td>
       <td>text that a movie has been removed from list of favorites</td>

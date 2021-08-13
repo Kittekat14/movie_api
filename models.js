@@ -1,6 +1,8 @@
+const { toInteger } = require('lodash');
 const mongoose = require('mongoose');
 
 let movieSchema = mongoose.Schema({
+  movieid: Number,
   title: {type: String, required: true},
   description: {type: String, required: true},
   genre: {

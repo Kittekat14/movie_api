@@ -19,7 +19,7 @@ const Users = Models.User;
 
 mongoose.connect('mongodb://localhost:27017/ActorInspector', { useNewUrlParser: true, useUnifiedTopology: true });
 
-/*
+
 let movies = [
   {
     movieid: 1,
@@ -382,6 +382,7 @@ let movies = [
     featured: true
   }
 ];
+/*
 let users = [
   {
     _id: 1,
@@ -564,7 +565,6 @@ app.get('/movies', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-
 //GET movies by title //OK
 app.get('/movies/:title', (req,res) => {
   Movies.findOne({title: req.params.title})
@@ -576,6 +576,10 @@ app.get('/movies/:title', (req,res) => {
   });
 })
 
+//GET all directors //NOT in MongoDB, but "in-memory"-data
+app.get('/directors', (req,res) => {
+  res.json(directors);
+})
 //GET directors by name //NOT in MongoDB, but "in-memory"-data
 app.get('/directors/:name', (req,res) => {
   const director = directors.find(d => d.name === req.params.name);
@@ -586,14 +590,9 @@ app.get('/directors/:name', (req,res) => {
   }
 })
 
-//GET all directors //NOT in MongoDB, but "in-memory"-data
-app.get('/directors/', (req,res) => {
-  const director = directors.find(d => d.name === req.params.name);
-  if(!director) {
-    res.status(404).send('The director with this name was not found.');
-  } else {
-    res.status(200).json(director);
-  }
+//GET all genres //NOT in MongoDB, but "in-memory"-data
+app.get('/genres', (req,res) => {
+  res.json(genres);
 })
 //GET genres by name //NOT in MongoDB, but "in-memory"-data
 app.get('/genres/:name', (req,res) => {
@@ -615,7 +614,6 @@ app.get('/users', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-
 // GET user by username // OK
 app.get('/users/:username', (req, res) => {
   Users.findOne({ username: req.params.username })
@@ -655,17 +653,18 @@ app.post('/users', (req, res) => {
   })
 })  
 
-// Updating username of a certain user
+// Update username of a certain user
 app.put('/users/:username', (req, res) => {
-  Users.findOneAndUpdate({ username: req.params.username }, { $set:
-    {
+  Users.findOneAndUpdate({ username: req.params.username }, 
+  { 
+    $set: {
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
       birthdate: req.body.birthdate
     }
   },
-  { new: true }, // This line makes sure that the updated document is returned
+  { new: true },
   (err, updatedUser) => {
     if(err) {
       console.error(err);
@@ -676,41 +675,46 @@ app.put('/users/:username', (req, res) => {
   });
 })
 
-// Adding movie to favorites by MovieId(?) in params //NOT working
-app.post('/users/:username/movies/:MovieId', (req, res) => {
-  Users.findOneAndUpdate({ username: req.params.username }, {
-    $push: { favorites: req.params.MovieID }
-  },
-  { new: true },
+// Add/Post movie to favorites by MovieId(=ObjectId) in params //NOT working
+app.post('/users/:username/movies/:movieid', (req, res) => {
+  Users.findOneAndUpdate({ username: req.params.username}, 
+    {
+     $push: { favorites: req.params.movieid } 
+    },
+   { new: true },
   (err, updatedUser) => {
-   if (err) {
-     console.error(err);
-     res.status(500).send('Error: ' + err);
-   } else {
-     res.json(updatedUser);
-   }
-  }
- )
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser);
+    }
+  });
 });
 
 // DELETE Requests
-// Remove movie from favorites by MovieId in params // NOT working
-app.delete('/users/:username/movies/:MovieId', (req, res) => {
-  Users.findOneAndUpdate({ username: req.params.username }, 
-   {
-    $pull: {favorites: req.params.MovieId} 
-   },      
-    {new: true}
-    .then((updatedUser) => {
-    res.status(201).json(updatedUser)})
-    .catch((error) => {
-    console.error(error);
-    res.status(500).send('Error: ' + error);
-    })
-  )
-})
+// Delete movie from favorites by Movieid (=ObjectId) in params
+app.delete('/users/:username/favorites/:movieid', (req,res) => {
+  Users.findOneAndUpdate ({ 
+    username: req.params.username
+  },
+  {
+    $pull: { favorites: req.params.movieid } 
+  },
+  {
+    new: true
+  },
+  (err, updatedUser) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser);
+    }
+  });
+});
 
-// Deleting user by username
+// Delete user by username
 app.delete('/users/:username', (req, res) => {
   Users.findOneAndRemove({ username: req.params.username })
   .then((user) => {
