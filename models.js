@@ -22,10 +22,10 @@ let userSchema = mongoose.Schema({
   password: {type: String, required: true},
   email: {type: String, required: true},
   birthdate: Date,
-  favorites: [{ type: mongoose.Schema.Types.MovieId, ref: 'Movie' }]
+  favorites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]
 });
 
-let Movie = mongoose.model('Movie', movieSchema); //you name it ('Movie' or 'User') first and then point to the created variable 
+let Movie = mongoose.model('Movie', movieSchema); // creation of models: you name it ('Movie' or 'User') first and then point to the created variable 
 let User = mongoose.model('User', userSchema);
 
 module.exports.Movie = Movie;
