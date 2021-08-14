@@ -174,7 +174,7 @@ app.put('/users/:username', (req, res) => {
   });
 })
 
-// Add/Post movie to favorites by MovieId(=ObjectId) in params //NOT working
+// Add/Post movie to favorites by MovieId(=ObjectId) in params
 app.post('/users/:username/movies/:movieid', (req, res) => {
   Users.findOneAndUpdate({ username: req.params.username}, 
     {

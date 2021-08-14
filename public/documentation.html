@@ -9,18 +9,18 @@
 </head>
 <body>
   <h1>Documentation</h1>
-  <p>This is my server-side component of a movies web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create lists of their favorite movies or categorize movies after a certain viewpoint themselves.</p>
+  <p>This is my server-side component of a movies web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies (or categorize movies after a certain viewpoint themselves).</p>
   <p>Together with the client-side component made using React as Framework this application builds up to a complete web application using Full-Stack JavaScript Technologies. The project includes:</p>
   <ul>
     <li>APIs,</li>
     <li>Web Server,</li>
     <li>Frameworks,</li>
-    <li>Databases,</li>
-    <li>Business Logic,</li>
+    <li>Databases (MongoDB),</li>
+    <li>Business Logic (Mongoose),</li>
     <li>Authentication,</li>
     <li>Data Security, and more.</li>
   </ul>
-  <p>This complete tech stack is known as the MERN (MongoDB, Express, React, and Node.js) Stack. The REST API will be accessed via commonly used HTTP methods like GET and POST. Similar methods (CRUD) will be used to retrieve data from your database and store that data in a non-relational way.
+  <p>This complete tech stack is known as the MERN (MongoDB, Express, React, and Node.js) Stack. The REST API will be accessed via commonly used HTTP methods like GET and POST. Similar methods (CRUD) will be used to retrieve data from the database and store that data in a non-relational way.
   <table>
     <tr>
       <th>Business Logic</th>
@@ -34,7 +34,7 @@
       <td>/movies</td>
       <td>GET</td>
       <td>none</td>
-      <td>data of the movies in JSON format (.json)</td>
+      <td>data of all movies in JSON format (.json)</td>
     </tr>
     <tr>
       <td>users can get a list of all directors</td>
@@ -51,25 +51,39 @@
       <td>data of all genres in JSON format (.json)</td>
     </tr>
     <tr>
+      <td>users can get a list of all users</td>
+      <td>/users</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>data of all users in JSON format (.json)</td>
+    </tr>
+    <tr>
       <td>users can read data about a single movie, selected by title</td>
       <td>/movies/:title</td>
       <td>GET</td>
       <td>none</td>
-      <td>description data about a movie ({description, genre, director, image URL, featured: false/true}) in JSON</td>
+      <td>data about a movie ({title, description, release year, genre, director, actors, image URL, featured: false/true}) in JSON format</td>
     </tr>
     <tr>
       <td>users can read data about a director, selected by name</td>
       <td>/directors/:name</td>
       <td>GET</td>
       <td>none</td>
-      <td>description data about a director ({bio, birth year, death year}) in JSON</td>
+      <td>data about a director ({name, bio, birth year, movies}) in JSON format</td>
     </tr>
     <tr>
       <td>users can read data about a genre, selected by name</td>
       <td>/genres/:name</td>
       <td>GET</td>
       <td>none</td>
-      <td>description data about a genre ({description}) in JSON</td>
+      <td>data about a genre ({name, description}) in JSON format</td>
+    </tr>
+    <tr>
+      <td>users can read data about a single user, selected by username</td>
+      <td>/users/:username</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>data about a user ({username, password, email, birthdate, list of favorite movies}) in JSON format</td>
     </tr>
     <tr>
       <td>users can register</td>
@@ -92,25 +106,20 @@
       <td>/users/:username</td>
       <td>DELETE</td>
       <td>none</td>
-      <td>simple text message that user with username was deleted</td>
+      <td>message that a user with a certain username was deleted</td>
     </tr>
     <tr>
       <td>users can update their user info (e.g. change their username)</td>
       <td>/users/:username</td>
       <td>PUT</td>
-      <td>e.g. { username: "Katrina" }</td>
-      <td>new updated user info</td>
+      <td>e.g. { "username": "Katrina" }</td>
+      <td>new updated user info with new username</td>
     </tr>
     <tr>
-      <td>users can add movie titles to their list of favorites</td>
+      <td>users can add movieids to their list of favorites</td>
       <td>/users/:username/movies/:movieid</td>
-      <td>PATCH</td>
-      <td>e.g. {
-        movieid: 4,
-        title: "Milk",
-        genre: "biography"
-      }
-      </td>
+      <td>POST</td>
+      <td>none</td>
       <td>text that a movie has been added to list of favorites</td>
     </tr>
     <tr>
