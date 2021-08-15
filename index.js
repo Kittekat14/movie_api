@@ -21,12 +21,12 @@ const Genres = Models.Genre;
 mongoose.connect('mongodb://localhost:27017/ActorInspector', { useNewUrlParser: true, useUnifiedTopology: true });
 
 //GET Requests
-// GET homepage and list of all movies in JSON
+// GET homepage and list of all movies in JSON //OK
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
 
-// GET all movies
+// GET all movies //OK
 app.get('/movies', (req, res) => {
   Movies.find()
     .then((movies) => {
@@ -37,7 +37,7 @@ app.get('/movies', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-//GET movies by title
+//GET movies by title //OK
 app.get('/movies/:title', (req,res) => {
   Movies.findOne({title: req.params.title})
   .then((movie) => {
@@ -101,7 +101,7 @@ app.get('/genres/:name', (req,res) => {
   });
 })
 
-// GET all users
+// GET all users //OK
 app.get('/users', (req, res) => {
   Users.find()
     .then((users) => {
@@ -112,7 +112,7 @@ app.get('/users', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-// GET user by username
+// GET user by username // OK
 app.get('/users/:username', (req, res) => {
   Users.findOne({ username: req.params.username })
     .then((user) => {
@@ -213,7 +213,7 @@ app.delete('/users/:username/favorites/:movieid', (req,res) => {
   });
 });
 
-// Delete user by username
+// Delete user by username //OK
 app.delete('/users/:username', (req, res) => {
   Users.findOneAndRemove({ username: req.params.username })
   .then((user) => {
@@ -228,6 +228,7 @@ app.delete('/users/:username', (req, res) => {
     res.status(500).send('Error: ' + err);
   });
 }) 
+
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
