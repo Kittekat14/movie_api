@@ -32,7 +32,6 @@ let directorSchema = mongoose.Schema({
   name: {type: String, required: true},
   bio: String,
   birthyear: String,
-  movies: [String]
 });
 
 let genreSchema = mongoose.Schema({
