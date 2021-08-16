@@ -15,18 +15,18 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
-const Directors = Models.Director;
 const Genres = Models.Genre;
+const Directors = Models.Director;
 
 mongoose.connect('mongodb://localhost:27017/ActorInspector', { useNewUrlParser: true, useUnifiedTopology: true });
 
 //GET Requests
-// GET homepage and list of all movies in JSON //OK
+// GET homepage and list of all movies in JSON
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
 
-// GET all movies //OK
+// GET all movies 
 app.get('/movies', (req, res) => {
   Movies.find()
     .then((movies) => {
@@ -37,7 +37,7 @@ app.get('/movies', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-//GET movies by title //OK
+//GET movies by title 
 app.get('/movies/:title', (req,res) => {
   Movies.findOne({title: req.params.title})
   .then((movie) => {
@@ -101,7 +101,7 @@ app.get('/genres/:name', (req,res) => {
   });
 })
 
-// GET all users //OK
+// GET all users 
 app.get('/users', (req, res) => {
   Users.find()
     .then((users) => {
@@ -112,7 +112,7 @@ app.get('/users', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-// GET user by username // OK
+// GET user by username 
 app.get('/users/:username', (req, res) => {
   Users.findOne({ username: req.params.username })
     .then((user) => {
@@ -213,7 +213,7 @@ app.delete('/users/:username/favorites/:movieid', (req,res) => {
   });
 });
 
-// Delete user by username //OK
+// Delete user by username 
 app.delete('/users/:username', (req, res) => {
   Users.findOneAndRemove({ username: req.params.username })
   .then((user) => {
