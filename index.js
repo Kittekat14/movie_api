@@ -105,7 +105,7 @@ app.get('/genres/:name', passport.authenticate('jwt', { session: false }), (req,
   });
 })
 
-// GET all users //OK
+// GET all users 
 app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.find()
     .then((users) => {
@@ -116,7 +116,7 @@ app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) =
       res.status(500).send('Error: ' + err);
     });
 });
-// GET user by username // OK
+// GET user by username 
 app.get('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({ username: req.params.username })
     .then((user) => {
@@ -217,7 +217,7 @@ app.delete('/users/:username/favorites/:movieid', passport.authenticate('jwt', {
   });
 });
 
-// Delete user by username //OK
+// Delete user by username 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndRemove({ username: req.params.username })
   .then((user) => {
