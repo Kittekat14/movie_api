@@ -34,52 +34,52 @@
       <td>/movies</td>
       <td>GET</td>
       <td>none</td>
-      <td>data of all movies in JSON format (.json)</td>
+      <td>list of all movies in JSON format (.json)</td>
     </tr>
     <tr>
       <td>users can get a list of all directors</td>
       <td>/directors</td>
       <td>GET</td>
       <td>none</td>
-      <td>data of all directors in JSON format (.json)</td>
+      <td>list of all directors in JSON format (.json)</td>
     </tr>
     <tr>
       <td>users can get a list of all genres</td>
       <td>/genres</td>
       <td>GET</td>
       <td>none</td>
-      <td>data of all genres in JSON format (.json)</td>
+      <td>list of all genres in JSON format (.json)</td>
     </tr>
     <tr>
       <td>users can get a list of all users</td>
       <td>/users</td>
       <td>GET</td>
       <td>none</td>
-      <td>data of all users in JSON format (.json)</td>
+      <td>list of all users in JSON format (.json)</td>
     </tr>
     <tr>
-      <td>users can read data about a single movie, selected by title</td>
+      <td>users can read data about a certain movie, selected by title</td>
       <td>/movies/:title</td>
       <td>GET</td>
       <td>none</td>
       <td>data about a movie ({title, description, release year, genre, director, actors, image URL, featured: false/true}) in JSON format</td>
     </tr>
     <tr>
-      <td>users can read data about a director, selected by name</td>
+      <td>users can read data about a certain director, selected by name</td>
       <td>/directors/:name</td>
       <td>GET</td>
       <td>none</td>
       <td>data about a director ({name, bio, birth year, movies}) in JSON format</td>
     </tr>
     <tr>
-      <td>users can read data about a genre, selected by name</td>
+      <td>users can read data about a certain genre, selected by name</td>
       <td>/genres/:name</td>
       <td>GET</td>
       <td>none</td>
       <td>data about a genre ({name, description}) in JSON format</td>
     </tr>
     <tr>
-      <td>users can read data about a single user, selected by username</td>
+      <td>users can read data about a certain user, selected by username</td>
       <td>/users/:username</td>
       <td>GET</td>
       <td>none</td>
@@ -117,17 +117,17 @@
     </tr>
     <tr>
       <td>users can add movieids to their list of favorites</td>
-      <td>/users/:username/movies/:movieid</td>
+      <td>/users/:username/favorites/:movieid</td>
       <td>POST</td>
       <td>none</td>
-      <td>text that a movie has been added to list of favorites</td>
+      <td>new list of favorites in the user object</td>
     </tr>
     <tr>
       <td>users can delete movie titles (= :title) from their list of favorites</td>
       <td>/users/:username/favorites/:movieid</td>
       <td>DELETE</td>
       <td>none</td>
-      <td>text that a movie has been removed from list of favorites</td>
+      <td>new list of favorites in the user object</td>
     </tr>
   </table>
     
