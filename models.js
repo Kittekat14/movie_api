@@ -20,6 +20,15 @@ let userSchema = mongoose.Schema({
   favorites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Movie'}]
 });
 
+
+userSchema.statics.hashPassword = (password) => {
+  return bcrypt.hashSync(password, 10);
+};
+
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
+
 let genreSchema = mongoose.Schema({
   name: {type: String, required: true},
   description: String

@@ -3,13 +3,18 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const app = express();
+
+const cors = require('cors');
+app.use(cors());
+
+let auth = require('./auth.js')(app);
+const passport = require('passport');
+require('./passport');
+const { check, validationResult } = require('express-validator');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-let auth = require('./auth.js')(app);
-const passport = require('passport');
-require('./passport');
 app.use(express.json());
 app.use(morgan('common'));
 app.use(express.static('public'));
@@ -130,7 +135,17 @@ app.get('/users/:username', passport.authenticate('jwt', { session: false }), (r
 
 // POST and PUT Requests 
 // Creating new user by username
-app.post('/users', (req, res) => {
+app.post('/users', [
+check('username', 'Username must at least consist of 5 characters.').isLength({min: 5}), 
+check('username', 'Username contains non alphanumeric and therefore not allowed characters.').isAlphanumeric(),
+check('password', 'Password cannot be empty').not().isEmpty(), 
+check('email', 'Email does not appear to be valid').isEmail()
+], (req, res) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array()});
+  };
+  let hashedPassword = Users.hashPassword(req.body.password);
   Users.findOne({username: req.body.username})
   .then((user) => {
     if(user) {
@@ -138,7 +153,7 @@ app.post('/users', (req, res) => {
     } else {
       Users.create({
         username: req.body.username,
-        password: req.body.password,
+        password: hashedPassword,
         email: req.body.email,
         birthdate: req.body.birthdate
       })
@@ -157,7 +172,14 @@ app.post('/users', (req, res) => {
 })  
 
 // Update username of a certain user
-app.put('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.put('/users/:username', [
+  check('username', 'Username must at least consist of 5 characters.').isLength({min: 5}), 
+  check('username', 'Username contains non alphanumeric and therefore not allowed characters.').isAlphanumeric()
+], passport.authenticate('jwt', { session: false }), (req, res) => {
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array()});
+  }
   Users.findOneAndUpdate({ username: req.params.username }, 
   { 
     $set: {
@@ -238,6 +260,8 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-app.listen(8080, () => {
-  console.log('Your App is listening on Port 8080');
+
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
