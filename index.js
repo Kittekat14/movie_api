@@ -29,7 +29,7 @@ const Directors = Models.Director;
 //mongoose.connect('mongodb://localhost:27017/ActorInspector', { useNewUrlParser: true, useUnifiedTopology: true });
 //mongoose.connect('mongodb+srv://katrinhofstetter:<password>@mycreations.zttet.mongodb.net/ActorInspector?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( 'process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
 
 //GET Requests
 // GET homepage and list of all movies in JSON
