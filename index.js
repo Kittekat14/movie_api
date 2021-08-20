@@ -33,7 +33,7 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 
 //GET Requests
 // GET homepage and list of all movies in JSON
-app.get('/',  (req, res) => {
+app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
 
