@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 });
 
 // GET all movies
-app.get('/movies', { session: false }), (req, res) => {
+app.get('/movies', (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
@@ -47,7 +47,7 @@ app.get('/movies', { session: false }), (req, res) => {
       console.error(error);
       res.status(500).send('Error: ' + error);
     });
-});
+})
 
 //GET movies by title 
 app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req,res) => {
