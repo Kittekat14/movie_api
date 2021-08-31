@@ -41,6 +41,7 @@ app.get('/', (req, res) => {
 app.get('/movies', (req, res) => {
   Movies.find()
   .populate('genre')
+  .populate('director')
     .then((movies) => {
       res.status(201).json(movies);
     })
@@ -117,6 +118,7 @@ app.get('/genres/:name', passport.authenticate('jwt', { session: false }), (req,
 // GET all users 
 app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.find()
+  .populate('favorites', 'title')
     .then((users) => {
       res.status(201).json(users);
     })
