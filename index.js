@@ -40,6 +40,7 @@ app.get('/', (req, res) => {
 // GET all movies
 app.get('/movies', (req, res) => {
   Movies.find()
+  .populate('genre')
     .then((movies) => {
       res.status(201).json(movies);
     })
