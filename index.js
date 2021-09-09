@@ -2,22 +2,25 @@ const express = require('express');
 const morgan = require('morgan');
 const uuid = require('uuid');
 const app = express();
+app.use(express.json());
+app.use(morgan('common'));
+app.use(express.static('public'));
 
 const cors = require('cors');
 app.use(cors());
-const bodyParser = require('body-parser');
 
-let auth = require('./auth.js')(app);
-const passport = require('passport');
-require('./passport');
-const { check, validationResult } = require('express-validator');
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(express.json());
-app.use(morgan('common'));
-app.use(express.static('public'));
+
+let auth = require('./auth.js')(app);
+const passport = require('passport');
+require('./passport');
+
+
+const { check, validationResult } = require('express-validator');
 
 const mongoose = require('mongoose');
 const Models = require('./models.js');
