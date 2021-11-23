@@ -209,6 +209,20 @@ app.put('/users/:username', [
   });
 })
 
+
+// Get all favorites 
+app.get('/users/:username/favorites', passport.authenticate('jwt', { session: false }), (req, res) => {
+ Users.findOne({ username: req.params.username })
+   .populate("favorites", "title")
+   .then((user) => {
+     res.status(201).json(user);
+   })
+   .catch((err) => {
+     console.error(err);
+     res.status(500).send("Error: " + err);
+   });
+});
+
 // Add/Post movie to favorites by MovieId(=ObjectId) in params
 app.post('/users/:username/favorites/:movieid', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ username: req.params.username}, 
@@ -225,6 +239,8 @@ app.post('/users/:username/favorites/:movieid', passport.authenticate('jwt', { s
     }
   });
 });
+
+
 
 // DELETE Requests
 // Delete movie from favorites by Movieid (=ObjectId) in params
