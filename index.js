@@ -34,13 +34,13 @@ const Directors = Models.Director;
 
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-//GET Requests
-// GET homepage and list of all movies in JSON
+/**GET Requests */
+/**GET homepage and list of all movies in JSON */ 
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to ActorInspector, the best movie database!</h1>');
 });
 
-// GET all movies
+/**GET all movies */
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
   .populate('genre')
@@ -54,7 +54,7 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
     });
 })
 
-//GET movies by title 
+/**GET movies by title */
 app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req,res) => {
   Movies.findOne({title: req.params.title})
   .then((movie) => {
@@ -66,7 +66,7 @@ app.get('/movies/:title', passport.authenticate('jwt', { session: false }), (req
   });
 })
 
-//GET all directors
+/**GET all directors */
 app.get('/directors', passport.authenticate('jwt', { session: false }), (req,res) => {
   Directors.find()
     .then((director) => {
@@ -78,7 +78,7 @@ app.get('/directors', passport.authenticate('jwt', { session: false }), (req,res
     });
 })
 
-//GET directors by name 
+/**GET directors by name */
 app.get('/directors/:name', passport.authenticate('jwt', { session: false }), (req,res) => {
   Directors.findOne({
     name: req.params.name
@@ -92,7 +92,7 @@ app.get('/directors/:name', passport.authenticate('jwt', { session: false }), (r
   });
 })
 
-//GET all genres
+/** GET all genres */
 app.get('/genres', passport.authenticate('jwt', { session: false }), (req,res) => {
   Genres.find()
     .then((genre) => {
@@ -104,7 +104,7 @@ app.get('/genres', passport.authenticate('jwt', { session: false }), (req,res) =
     });
 })
 
-//GET genres by name
+/**GET genres by name*/
 app.get('/genres/:name', passport.authenticate('jwt', { session: false }), (req,res) => {
   Genres.findOne({
     name: req.params.name
@@ -118,7 +118,7 @@ app.get('/genres/:name', passport.authenticate('jwt', { session: false }), (req,
   });
 })
 
-// GET all users 
+/** GET all users */
 app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.find()
   .populate('favorites', 'title')
@@ -130,20 +130,21 @@ app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) =
       res.status(500).send('Error: ' + err);
     });
 });
-// GET user by username 
+/** GET user by username */ 
 app.get('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({ username: req.params.username })
-    .then((user) => {
-      res.status(201).json(user);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+    .populate("favorites", "title")
+      .then((user) => {
+        res.status(201).json(user);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
 });
 
-// POST and PUT Requests 
-// Creating new user by username
+/** POST and PUT Requests */ 
+/** Creating new user by username */ 
 app.post('/users', [
 check('username', 'Username must at least consist of 5 characters.').isLength({min: 5}), 
 check('username', 'Username contains non alphanumeric and therefore not allowed characters.').isAlphanumeric(),
@@ -180,7 +181,7 @@ check('email', 'Email does not appear to be valid').isEmail()
   })
 })  
 
-// Update username of a certain user
+/** Update user data of a certain user*/ 
 app.put('/users/:username', [
   check('username', 'Username must at least consist of 5 characters.').isLength({min: 5}), 
   check('username', 'Username contains non alphanumeric and therefore not allowed characters.').isAlphanumeric()
@@ -210,7 +211,7 @@ app.put('/users/:username', [
 })
 
 
-// Get all favorites 
+/** Get all favorites */  
 app.get('/users/:username/favorites', passport.authenticate('jwt', { session: false }), (req, res) => {
  Users.findOne({ username: req.params.username })
    .populate("favorites", "title")
@@ -223,7 +224,7 @@ app.get('/users/:username/favorites', passport.authenticate('jwt', { session: fa
    });
 });
 
-// Add/Post movie to favorites by MovieId(=ObjectId) in params
+/** Add/Post movie to favorites by MovieId(=ObjectId) in params */ 
 app.post('/users/:username/favorites/:movieid', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ username: req.params.username}, 
     {
@@ -242,8 +243,8 @@ app.post('/users/:username/favorites/:movieid', passport.authenticate('jwt', { s
 
 
 
-// DELETE Requests
-// Delete movie from favorites by Movieid (=ObjectId) in params
+/** DELETE Requests */ 
+/** Delete movie from favorites by Movieid (=ObjectId) in params */ 
 app.delete('/users/:username/favorites/:movieid', passport.authenticate('jwt', { session: false }), (req,res) => {
   Users.findOneAndUpdate ({ 
     username: req.params.username
@@ -264,7 +265,7 @@ app.delete('/users/:username/favorites/:movieid', passport.authenticate('jwt', {
   });
 });
 
-// Delete user by username 
+/** Delete user by username */ 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndRemove({ username: req.params.username })
   .then((user) => {

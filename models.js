@@ -42,8 +42,8 @@ let directorSchema = mongoose.Schema({
   movies: [String]
 });
 
-
-let Movie = mongoose.model('Movie', movieSchema); // creation of models: you name it ('Movie' or 'User') first and then point to the created variable 
+/** creation of models: you name it ('Movie' or 'User') first and then point to the created variable  */ 
+let Movie = mongoose.model('Movie', movieSchema); 
 let User = mongoose.model('User', userSchema);
 let Genre = mongoose.model('Genre', genreSchema);
 let Director = mongoose.model('Director', directorSchema);
