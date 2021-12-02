@@ -15,5 +15,5 @@ Together with the client-side component made using React as Framework this appli
 
 This complete tech stack is known as the MERN (MongoDB, Express, React, and Node.js) Stack. The REST API will be accessed via commonly used HTTP methods like GET and POST. Similar methods (CRUD) will be used to retrieve data from the database and store that data in a non-relational way. 
 
-[API documentation](public/assets/movie-api-endpoints.PNG)
+[API Endpoints](public/assets/movie-api-endpoints.PNG)
 
