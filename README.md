@@ -17,3 +17,5 @@ This complete tech stack is known as the MERN (MongoDB, Express, React, and Node
 
 [API Endpoints](public/assets/movie-api-endpoints.PNG)
 
+Movie pictures from [Amazon](https://m.media-amazon.com/images).
+
