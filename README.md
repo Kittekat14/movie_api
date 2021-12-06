@@ -19,3 +19,7 @@ This complete tech stack is known as the MERN (MongoDB, Express, React, and Node
 
 Movie pictures from [Amazon](https://m.media-amazon.com/images).
 
+
+## Contact me on LinkedIn or get to know me on my own website:
+[My Profile](https://www.linkedin.com/in/katrin-hofstetter-25b945181/).
+[My Portfolio Website](https://Kittekat14.github.io/portfolio-website).
